@@ -1,0 +1,27 @@
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.BLL.deps.json
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.BLL.dll
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.BLL.pdb
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.Common.dll
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.DAL.dll
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.Common.pdb
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.DAL.pdb
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.csprojAssemblyReference.cache
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.AssemblyInfoInputs.cache
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.AssemblyInfo.cs
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.csproj.CopyComplete
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.dll
+F:\TestDotnet\LTCSDL\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.pdb
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.BLL.deps.json
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.BLL.dll
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.BLL.pdb
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.Common.dll
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.DAL.dll
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.Common.pdb
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\bin\Debug\netcoreapp3.1\LTCSDL.DAL.pdb
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.csprojAssemblyReference.cache
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.csproj.CoreCompileInputs.cache
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.AssemblyInfoInputs.cache
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.AssemblyInfo.cs
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.csproj.CopyComplete
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.dll
+D:\LẬP TRÌNH CƠ SỞ DỮ LIỆU\LTCSDL-192\LTCSDL.BLL\obj\Debug\netcoreapp3.1\LTCSDL.BLL.pdb
