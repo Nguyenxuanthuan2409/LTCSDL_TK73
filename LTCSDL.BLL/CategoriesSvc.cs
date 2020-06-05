@@ -87,6 +87,21 @@ namespace LTCSDL.BLL
         {
             return _rep.getCustOrdersDetail_LinQ(ordId);
         }
-        #endregion
-    }
+
+        public object getEmployeeRevenue(DateTime date)
+        {
+            return _rep.getEmployeeRevenue(date);
+        }
+
+        public object getEmployeeRevenueStartEnd(DateTime begindate, DateTime enddate)
+        {
+            return _rep.getEmployeeRevenueStartEnd(begindate, enddate);
+        }
+
+        public object getEmployeeRevenue_LinQ(DateTime date)       // ADO.DOT NET
+        {
+            return _rep.getEmployeeRevenue_LinQ(date);
+        }
+            #endregion
+     }
 }

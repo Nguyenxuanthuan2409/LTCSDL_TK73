@@ -230,6 +230,116 @@ namespace LTCSDL.DAL
         
         }
 
+        public object getEmployeeRevenue(DateTime date)       // ADO.DOT NET
+        {
+            List<object> res = new List<object>();      // res la result , ket qua
+            var cnn = (SqlConnection)Context.Database.GetDbConnection();
+            if (cnn.State == ConnectionState.Closed)
+                cnn.Open();
+
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandText = "DoanhThuTatCaNhanVienTrongNgay";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@date", date);
+                da.SelectCommand = cmd;
+                da.Fill(ds);        // do du lieu vao
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)  // Kiem tra co du lieu hay khong
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        var x = new
+                        {
+                            EmployeeID = row["EmployeeID"],
+                            LastName = row["LastName"],
+                            FirstName = row["FirstName"],
+                            Revenue = row["Revenue"]
+                        };
+                        res.Add(x);
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                res = null;
+            }
+            return res;
+        }
+
+        public object getEmployeeRevenue_LinQ(DateTime date)       // ADO.DOT NET
+        {
+            var res = Context.Orders
+                .Join(Context.OrderDetails, a => a.OrderId, b => b.OrderId, (a, b) => new
+                {
+                    a.OrderDate,
+                    a.EmployeeId,
+                    Revenue = b.Quantity * (1 - (decimal)b.Discount) * b.UnitPrice
+                })
+                .Join(Context.Employees, a => a.EmployeeId, b => b.EmployeeId, (a, b) => new
+                {
+                    a.OrderDate,
+                    a.EmployeeId,
+                    a.Revenue,
+                    b.LastName,
+                    b.FirstName
+                })
+                .Where(x => x.OrderDate.Value.Date == date.Date)
+                .ToList();
+            var data = res.GroupBy(x => x.EmployeeId).Select(x => new
+            {
+                x.First().EmployeeId,
+                x.First().FirstName,
+                x.First().LastName,
+                Revenue = x.Sum(p => p.Revenue)
+            });
+
+            return data;
+        }
+            public object getEmployeeRevenueStartEnd(DateTime begindate, DateTime enddate)       // ADO.DOT NET
+        {
+            List<object> res = new List<object>();      // res la result , ket qua
+            var cnn = (SqlConnection)Context.Database.GetDbConnection();
+            if (cnn.State == ConnectionState.Closed)
+                cnn.Open();
+
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandText = "DoanhThuNhanVienCoNgayBatDauVaKetThuc";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@startdate", begindate);
+                cmd.Parameters.AddWithValue("@endtdate", enddate);
+                da.SelectCommand = cmd;
+                da.Fill(ds);        // do du lieu vao
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)  // Kiem tra co du lieu hay khong
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        var x = new
+                        {
+                            EmployeeID = row["EmployeeID"],
+                            LastName = row["LastName"],
+                            FirstName = row["FirstName"],
+                            Revenue = row["Revenue"],
+                        };
+                        res.Add(x);
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                res = null;
+            }
+            return res;
+        }
+
     }
 
 }

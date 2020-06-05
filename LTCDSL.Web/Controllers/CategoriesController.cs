@@ -79,6 +79,30 @@ namespace LTCSDL.Web.Controllers
             res.Data = _svc.getCustOrdersDetail_LinQ(req.Id);
             return Ok(res);
         }
+
+        [HttpPost("get-by-getEmployeeRevenue")]
+        public IActionResult getEmployeeRevenue([FromBody]RevenueReq req)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.getEmployeeRevenue(req.dataF);
+            return Ok(res);
+        }
+
+        [HttpPost("get-by-getemployeeRevenue_linq")]
+        public IActionResult getEmployeeRevenue_LinQ([FromBody]RevenueReq req)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.getEmployeeRevenue(req.dataF);
+            return Ok(res);
+        }
+
+        [HttpPost("get-by-getEmployeeRevenueStartEnd")]
+        public IActionResult getEmployeeRevenueStartEnd([FromBody]RevenueReq req)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.getEmployeeRevenueStartEnd(req.dataF,req.dataT);
+            return Ok(res);
+        }
         private readonly CategoriesSvc _svc;
     }
 }
