@@ -15,5 +15,10 @@ namespace LTCSDL.DAL.Models
         public string Phone { get; set; }
 
         public virtual ICollection<Orders> Orders { get; set; }
+
+        internal void SetError(string stackTrace)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

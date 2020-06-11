@@ -313,8 +313,8 @@ namespace LTCSDL.DAL
                 var cmd = cnn.CreateCommand();
                 cmd.CommandText = "DoanhThuNhanVienCoNgayBatDauVaKetThuc";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@startdate", begindate);
-                cmd.Parameters.AddWithValue("@endtdate", enddate);
+                cmd.Parameters.AddWithValue("@begindate", begindate);   // Phai giong ben khai bao bien cua SQL
+                cmd.Parameters.AddWithValue("@enddate", enddate);
                 da.SelectCommand = cmd;
                 da.Fill(ds);        // do du lieu vao
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)  // Kiem tra co du lieu hay khong
@@ -339,6 +339,146 @@ namespace LTCSDL.DAL
             }
             return res;
         }
+
+        public object getEmployeeRevenueStartEnd_LinQ(DateTime begindate, DateTime enddate)       // ADO.DOT NET
+        {
+            var res = Context.Orders
+                .Join(Context.OrderDetails, a => a.OrderId, b => b.OrderId, (a, b) => new
+                {
+                    a.OrderDate,
+                    a.EmployeeId,
+                    Revenue = b.Quantity * (1 - (decimal)b.Discount) * b.UnitPrice
+                })
+                .Join(Context.Employees, a => a.EmployeeId, b => b.EmployeeId, (a, b) => new
+                {
+                    a.OrderDate,
+                    a.EmployeeId,
+                    a.Revenue,
+                    b.LastName,
+                    b.FirstName
+                })
+                .Where(x => x.OrderDate >= begindate && x.OrderDate <=enddate)
+                .ToList();
+            var data = res.GroupBy(x => x.EmployeeId).Select(x => new
+            {
+                x.First().EmployeeId,
+                x.First().FirstName,
+                x.First().LastName,
+                Revenue = x.Sum(p => p.Revenue)
+            });
+
+            return data;
+        }
+
+
+        // 
+        public object OrderFromToPagination(DateTime dateF, DateTime dateT, int size, int page)       // ADO.DOT NET
+        {
+            List<object> res = new List<object>();      // res la result , ket qua
+            var cnn = (SqlConnection)Context.Database.GetDbConnection();
+            if (cnn.State == ConnectionState.Closed)
+                cnn.Open();
+
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandText = "OrderFromToPagination";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@dateF", dateF);   // Phai giong ben khai bao bien cua SQL
+                cmd.Parameters.AddWithValue("@dateT", dateT);
+                cmd.Parameters.AddWithValue("@size", size);
+                cmd.Parameters.AddWithValue("@page", page);
+                da.SelectCommand = cmd;
+                da.Fill(ds);        // do du lieu vao
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)  // Kiem tra co du lieu hay khong
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        var x = new
+                        {
+                            OrderID = row["OrderID"],
+                            CustomerID = row["CustomerID"],
+                            EmployeeID = row["EmployeeID"],
+                            OrderDate = row["OrderDate"],
+                            RequiredDate = row["RequiredDate"],
+                            ShippedDate = row["ShippedDate"],
+                            ShipVia = row["ShipVia"],
+                            Freight = row["Freight"],
+                            ShipName = row["ShipName"],
+                            ShipAddress = row["ShipAddress"],
+                            ShipCity = row["ShipCity"],
+                            ShipRegion = row["ShipRegion"],
+                            ShipPostalCode = row["ShipPostalCode"],
+                            ShipCountry = row["ShipCountry"],
+
+                        };
+                        res.Add(x);
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                res = null;
+            }
+            return res;
+        }
+
+        public object ChiTietDonHangTheoID(int id)       // ADO.DOT NET
+        {
+            List<object> res = new List<object>();      // res la result , ket qua
+            var cnn = (SqlConnection)Context.Database.GetDbConnection();
+            if (cnn.State == ConnectionState.Closed)
+                cnn.Open();
+
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                var cmd = cnn.CreateCommand();
+                cmd.CommandText = "LayChiTietDonHangTheoID";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);   // Phai giong ben khai bao bien cua SQL
+                
+                da.SelectCommand = cmd;
+                da.Fill(ds);        // do du lieu vao
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)  // Kiem tra co du lieu hay khong
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        var x = new
+                        {
+                            OrderID = row["OrderID"],
+                            CustomerID = row["CustomerID"],
+                            EmployeeID = row["EmployeeID"],
+                            OrderDate = row["OrderDate"],
+                            RequiredDate = row["RequiredDate"],
+                            ShippedDate = row["ShippedDate"],
+                            ShipVia = row["ShipVia"],
+                            Freight = row["Freight"],
+                            ShipName = row["ShipName"],
+                            ShipAddress = row["ShipAddress"],
+                            ShipCity = row["ShipCity"],
+                            ShipRegion = row["ShipRegion"],
+                            ShipPostalCode = row["ShipPostalCode"],
+                            ShipCountry = row["ShipCountry"],
+
+                        };
+                        res.Add(x);
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                res = null;
+            }
+            return res;
+        }
+
+
 
     }
 

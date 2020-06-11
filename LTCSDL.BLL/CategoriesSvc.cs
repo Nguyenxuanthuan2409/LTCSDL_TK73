@@ -98,10 +98,26 @@ namespace LTCSDL.BLL
             return _rep.getEmployeeRevenueStartEnd(begindate, enddate);
         }
 
+        public object getEmployeeRevenueStartEnd_LinQ(DateTime begindate, DateTime enddate)
+        {
+            return _rep.getEmployeeRevenueStartEnd(begindate, enddate);
+        }
+
         public object getEmployeeRevenue_LinQ(DateTime date)       // ADO.DOT NET
         {
             return _rep.getEmployeeRevenue_LinQ(date);
         }
-            #endregion
-     }
+
+
+        public object OrderFromToPagination(DateTime dateF, DateTime dateT, int size, int page)
+        {
+            return _rep.OrderFromToPagination(dateF, dateT, size, page);
+        }
+
+        public object ChiTietDonHangTheoID(int id)
+        {
+            return _rep.ChiTietDonHangTheoID(id);
+        }
+        #endregion
+    }
 }

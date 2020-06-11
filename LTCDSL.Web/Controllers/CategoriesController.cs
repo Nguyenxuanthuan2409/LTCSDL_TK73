@@ -103,6 +103,30 @@ namespace LTCSDL.Web.Controllers
             res.Data = _svc.getEmployeeRevenueStartEnd(req.dataF,req.dataT);
             return Ok(res);
         }
+
+        [HttpPost("get-by-getEmployeeRevenueStartEnd_LinQ")]
+        public IActionResult getEmployeeRevenueStartEnd_LinQ([FromBody]RevenueReq req)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.getEmployeeRevenueStartEnd_LinQ(req.dataF, req.dataT);
+            return Ok(res);
+        }
+
+        [HttpPost("get-by-OrderFromToPagination")]
+        public IActionResult OrderFromToPagination([FromBody]RevenueReq req)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.OrderFromToPagination(req.dataF, req.dataT, req.size, req.page);
+            return Ok(res);
+        }
+
+        [HttpPost("get-by-ChiTietDonHangTheoID")]
+        public IActionResult ChiTietDonHangTheoID([FromBody]SimpleReq req)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.ChiTietDonHangTheoID(req.Id);
+            return Ok(res);
+        }
         private readonly CategoriesSvc _svc;
     }
 }

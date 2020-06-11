@@ -9,5 +9,9 @@ namespace LTCSDL.Common.Req
         public DateTime dataF { get; set;}
 
         public DateTime dataT { get; set;}
+
+        public int size { get; set; }
+
+        public int page { get; set; }
     }
 }
